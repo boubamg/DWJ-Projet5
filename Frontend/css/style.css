@@ -23,3 +23,14 @@ header nav {
 header nav i {
     color: #333;
 }
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #F5EAF1;
+}
