@@ -7,6 +7,9 @@
 /* HEADER */
 
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     background-color: #F5EAF1;
@@ -29,8 +32,19 @@ header nav i {
 footer {
     display: flex;
     justify-content: center;
-    position: fixed;
-    bottom: 0;
     width: 100%;
     background-color: #F5EAF1;
+}
+
+/* MAIN */
+
+main {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0 50px 0;
+}
+
+.container {
+    display: flex;
+    max-width: 70%;
 }
