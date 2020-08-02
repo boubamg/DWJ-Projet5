@@ -14,7 +14,10 @@ request.onreadystatechange = function() {
         for(var i = 0; i < response.length; i++ ) {
 
             var liElement = document.createElement("li");
+            var a1Element = document.createElement("a");
+            var a2Element = document.createElement("a");
             var imgElement = document.createElement("img");
+            var divElement = document.createElement("div")
             var h3Element = document.createElement("h3");
             var pElement = document.createElement("p");
             var price = document.createElement("span");
@@ -22,15 +25,22 @@ request.onreadystatechange = function() {
 
 
             imgElement.setAttribute("src", response[i].imageUrl);
-            h3Element.textContent = response[i].name;
+            h3Element.textContent = response[i].name + " - ours en peluche";
             pElement.textContent = response[i].description;
-            price.textContent = response[i].price;
+            price.textContent = response[i].price + " EUR";
 
-            liElement.appendChild(imgElement);
-            liElement.appendChild(h3Element);
-            liElement.appendChild(pElement);
-            liElement.appendChild(price);
+            a1Element.setAttribute("href", "#");
+            a1Element.appendChild(imgElement);
+            
+            a2Element.setAttribute("href", "#");
+            a2Element.appendChild(h3Element);
 
+            divElement.appendChild(a2Element);
+            divElement.appendChild(pElement);
+            divElement.appendChild(price);
+
+            liElement.appendChild(a1Element);
+            liElement.appendChild(divElement)
             ulElement.appendChild(liElement);
         }
 
