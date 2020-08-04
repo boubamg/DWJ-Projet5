@@ -57,10 +57,18 @@ main {
 }
 .container ul {
     margin: 30px 0;
+    list-style-type: none;
+    margin-block-start: auto;
+    margin-block-end: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    padding-inline-start: 0;
 }
 
 .container ul li {
     display: inline-block;
+    list-style: none;
+    text-align: center;
     width: 40%;
     margin: 30px 0;
     padding: 0 20px 10px 0;
@@ -96,10 +104,28 @@ main {
 }
 
 .container ul li div button {
-    width: 50%;
+    width: 120px;
     align-items: center;
     cursor: pointer;
     background-color: #F5EAF1;
     border: 1px solid black;
     border-radius: 10px;
+}
+
+@media all and (max-width:700px) {
+    .container {
+        max-width: 100%;
+    }
+    .container ul li {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media all and (max-width:470px) {
+    .container ul li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
