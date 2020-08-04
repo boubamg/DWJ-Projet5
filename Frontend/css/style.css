@@ -83,10 +83,23 @@ main {
 
 .container ul li div a {
     text-decoration: none;
+    color: #000;
+}
+
+.container ul li div a:hover {
+    color: #8E3FFF;
+}
+
+.container ul li div .price {
+    font-weight: bold;
+    color: #8E3FFF;
 }
 
 .container ul li div button {
     width: 50%;
     align-items: center;
     cursor: pointer;
+    background-color: #F5EAF1;
+    border: 1px solid black;
+    border-radius: 10px;
 }
