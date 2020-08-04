@@ -19,15 +19,13 @@ request.onreadystatechange = function() {
             var imgElement = document.createElement("img");
             var divElement = document.createElement("div")
             var h3Element = document.createElement("h3");
-            var pElement = document.createElement("p");
             var price = document.createElement("span");
                 price.classList.add("price");
 
 
             imgElement.setAttribute("src", response[i].imageUrl);
-            h3Element.textContent = response[i].name + " - ours en peluche";
-            pElement.textContent = response[i].description;
-            price.textContent = response[i].price + " EUR";
+            h3Element.textContent = response[i].name;
+            price.textContent = response[i].price + " €";
 
             a1Element.setAttribute("href", "#");
             a1Element.appendChild(imgElement);
@@ -36,14 +34,12 @@ request.onreadystatechange = function() {
             a2Element.appendChild(h3Element);
 
             divElement.appendChild(a2Element);
-            divElement.appendChild(pElement);
             divElement.appendChild(price);
 
             liElement.appendChild(a1Element);
-            liElement.appendChild(divElement)
+            liElement.appendChild(divElement);
             ulElement.appendChild(liElement);
         }
-
     }
 }
 
