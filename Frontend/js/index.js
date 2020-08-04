@@ -16,6 +16,8 @@ request.onreadystatechange = function() {
             var liElement = document.createElement("li");
             var a1Element = document.createElement("a");
             var a2Element = document.createElement("a");
+            var buttonAdd = document.createElement("button");
+                buttonAdd.textContent = "Ajouter au panier";
             var imgElement = document.createElement("img");
             var divElement = document.createElement("div")
             var h3Element = document.createElement("h3");
@@ -35,6 +37,7 @@ request.onreadystatechange = function() {
 
             divElement.appendChild(a2Element);
             divElement.appendChild(price);
+            divElement.appendChild(buttonAdd);
 
             liElement.appendChild(a1Element);
             liElement.appendChild(divElement);
