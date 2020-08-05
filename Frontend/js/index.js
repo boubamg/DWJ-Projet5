@@ -29,10 +29,10 @@ request.onreadystatechange = function() {
             h3Element.textContent = response[i].name;
             price.textContent = response[i].price + " €";
 
-            a1Element.setAttribute("href", "#");
+            a1Element.setAttribute("href", "./pages/produit.html");
             a1Element.appendChild(imgElement);
             
-            a2Element.setAttribute("href", "#");
+            a2Element.setAttribute("href", "./pages/produit.html");
             a2Element.appendChild(h3Element);
 
             divElement.appendChild(a2Element);
