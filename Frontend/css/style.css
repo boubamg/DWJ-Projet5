@@ -4,6 +4,16 @@
     margin: 0;
 }
 
+body {
+    background: url("../img/floral.jpg");
+    background-attachment: fixed;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
 /* HEADER */
 
 header {
@@ -41,14 +51,17 @@ footer {
 main {
     margin: 100px 0 50px 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    
 }
 
 .container {
+    background-color: white;
+    max-width: 90%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    max-width: 80%;
-    text-align: center;
     border-radius: 10px;
 
     -webkit-box-shadow: -4px 122px 20px 121px rgba(245,234,241,0.5);
@@ -56,7 +69,10 @@ main {
     box-shadow: -4px 122px 20px 121px rgba(245,234,241,0.5);
 }
 .container ul {
-    margin: 30px 0;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     list-style-type: none;
     margin-block-start: auto;
     margin-block-end: auto;
@@ -72,7 +88,6 @@ main {
     width: 40%;
     margin: 30px 0;
     padding: 0 20px 10px 0;
-    border-bottom: 1px solid #EAEAEA;
 
 }
 
@@ -113,19 +128,22 @@ main {
 }
 
 @media all and (max-width:700px) {
-    .container {
-        max-width: 100%;
-    }
+    
     .container ul li {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
 }
 
 @media all and (max-width:470px) {
+    .container {
+        max-width: 100%;
+    }
+
     .container ul li {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: max-content;
     }
 }
