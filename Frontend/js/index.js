@@ -53,7 +53,7 @@ var getPost = function(){
             a1Element.setAttribute("href", "./pages/produit.html?id=" + teddies[i]._id);
             a1Element.appendChild(imgElement);
             
-            a2Element.setAttribute("href", "./pages/produit.html" + teddies[i]._id);
+            a2Element.setAttribute("href", "./pages/produit.html?id=" + teddies[i]._id);
             a2Element.appendChild(h3Element);
 
             // Built structure
