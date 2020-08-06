@@ -13,6 +13,8 @@ request.onreadystatechange = function() {
         var response = JSON.parse(this.responseText); 
         for(var i = 0; i < response.length; i++ ) {
 
+            // Creation of Tag
+
             var liElement = document.createElement("li");
             var a1Element = document.createElement("a");
             var a2Element = document.createElement("a");
@@ -25,6 +27,7 @@ request.onreadystatechange = function() {
                 price.classList.add("price");
 
 
+            liElement.setAttribute("id", response[i]._id);
             imgElement.setAttribute("src", response[i].imageUrl);
             h3Element.textContent = response[i].name;
             price.textContent = response[i].price + " €";
