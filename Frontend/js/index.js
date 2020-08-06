@@ -13,7 +13,7 @@ var get = function(url, success, error){
 }
 
 // * Function * Display Teddies
-var getPost = function(){
+var getAllTeddies = function(){
 
     get("http://localhost:3000/api/teddies",
 
@@ -67,9 +67,9 @@ var getPost = function(){
     }, 
     // Error Params
     function(error){
-        console.log("Erreur AJAX : " + error)
+        console.log(error)
     })
 }
 
 // Function call
-getPost();
+getAllTeddies();
