@@ -1,4 +1,4 @@
-// Connection to API
+// * MAIN Function * Connection to API
 var get = function(url, success, error){
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
@@ -12,7 +12,7 @@ var get = function(url, success, error){
     request.send();
 }
 
-// Display Teddies
+// * Function * Display Teddies
 var getPost = function(){
 
     get("http://localhost:3000/api/teddies",
@@ -28,7 +28,7 @@ var getPost = function(){
             var ulElement = document.createElement("ul");
             container.appendChild(ulElement)
 
-        // Loop for each teddie object
+        // Loop for each Teddie Object
         for(var i = 0; i < teddies.length; i++ ) {
             
             // Creation of Tag
@@ -50,10 +50,10 @@ var getPost = function(){
             price.textContent = teddies[i].price + " €";
 
             // Add links
-            a1Element.setAttribute("href", "./pages/produit.html");
+            a1Element.setAttribute("href", "./pages/produit.html?id=" + teddies[i]._id);
             a1Element.appendChild(imgElement);
             
-            a2Element.setAttribute("href", "./pages/produit.html");
+            a2Element.setAttribute("href", "./pages/produit.html" + teddies[i]._id);
             a2Element.appendChild(h3Element);
 
             // Built structure
