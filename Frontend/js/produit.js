@@ -23,11 +23,11 @@ var getSpecifictTeddie = function(){
     get("http://localhost:3000/api/teddies/" + id, 
     function(response){
         var teddie = JSON.parse(response)
-        console.log(response);
+        console.log(teddie);
     },
     function(error){
         console.log(error)
-    })
+    });
 }
 
-getSpecifictTeddie()
+getSpecifictTeddie();

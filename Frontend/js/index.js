@@ -24,9 +24,8 @@ var getAllTeddies = function(){
         console.log(teddies)
 
         var container = document.querySelector(".container");
-
-            var ulElement = document.createElement("ul");
-            container.appendChild(ulElement)
+        var ulElement = document.createElement("ul");
+        container.appendChild(ulElement)
 
         // Loop for each Teddie Object
         for(var i = 0; i < teddies.length; i++ ) {
