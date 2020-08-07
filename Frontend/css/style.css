@@ -108,6 +108,11 @@ main {
     align-items: center;
 }
 
+.container ul li div h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .container ul li div a {
     text-decoration: none;
     color: #000;
@@ -123,12 +128,10 @@ main {
 }
 
 .container ul li div button {
-    width: 120px;
+    inline-size: auto;
     align-items: center;
-    cursor: pointer;
     background-color: #F5EAF1;
     border: 1px solid black;
-    border-radius: 10px;
 }
 
 .container2 {

@@ -36,6 +36,7 @@ var getAllTeddies = function(){
             var a2Element = document.createElement("a");
             var buttonAdd = document.createElement("button");
                 buttonAdd.textContent = "Ajouter au panier";
+                buttonAdd.classList.add("btn")
             var imgElement = document.createElement("img");
             var divElement = document.createElement("div")
             var h3Element = document.createElement("h3");
