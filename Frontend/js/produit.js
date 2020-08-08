@@ -46,7 +46,22 @@ var getSpecifictTeddie = function(){
             teddiePrice.classList.add("price");
             teddiePrice.textContent = "Prix : " + teddie.price/100 + " €";
 
-        
+            // Dropdown list
+            var labelDropdownColor = document.createElement("label");
+                labelDropdownColor.setAttribute("for", "colorSelector");
+                labelDropdownColor.textContent = "Choisissez une couleur : ";
+
+            var SelectColor = document.createElement("select");
+                SelectColor.setAttribute("name", "colors");
+                SelectColor.setAttribute("id", "colorSelector");
+
+            for(i = 0; i < teddie.colors.length; i++) {
+                var optionList = document.createElement("option");
+                    optionList.setAttribute("value", teddie.colors[i]);
+                    optionList.textContent = teddie.colors[i];
+                    SelectColor.appendChild(optionList);
+            }
+            
 
         var buttonAdd = document.createElement("button");
             buttonAdd.textContent = "Ajouter au panier";
@@ -64,6 +79,8 @@ var getSpecifictTeddie = function(){
         infoProductDiv.appendChild(teddieName);
         infoProductDiv.appendChild(teddiePrice);
         infoProductDiv.appendChild(teddieDescription);
+        infoProductDiv.appendChild(labelDropdownColor);
+        infoProductDiv.appendChild(SelectColor);
         infoProductDiv.appendChild(buttonAdd)
 
 
