@@ -143,10 +143,27 @@ main {
 }
 .container2 .imgProduct {
     grid-area: imgProduct;
+    padding: 15px;
 }
 
 .container2 .infoProduct {
     grid-area: infoProduct;
+    padding: 25px;
+}
+
+.container2 .infoProduct .price {
+    font-weight: bold;
+    color: #8E3FFF;
+}
+
+.container2 .infoProduct p {
+    font-style: italic;
+    color: #777;
+}
+
+.container2 .infoProduct button {
+    background-color: #F5EAF1;
+    border: 1px solid black;
 }
 
 /* ---------------------------------------------------------------------------- */

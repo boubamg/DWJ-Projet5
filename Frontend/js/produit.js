@@ -37,15 +37,17 @@ var getSpecifictTeddie = function(){
             teddieImg.classList.add("img-fluid");
 
         var teddieName = document.createElement("h1");
-            teddieName.textContent = teddie.name;
+            teddieName.textContent = teddie.name + " - Ours en peluche";
 
         var teddieDescription = document.createElement("p")
             teddieDescription.textContent = teddie.description;
 
         var teddiePrice = document.createElement("span");
             teddiePrice.classList.add("price");
-            teddiePrice.textContent = teddie.price;
-            
+            teddiePrice.textContent = "Prix : " + teddie.price/100 + " €";
+
+        
+
         var buttonAdd = document.createElement("button");
             buttonAdd.textContent = "Ajouter au panier";
             buttonAdd.classList.add("btn");
