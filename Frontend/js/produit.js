@@ -23,7 +23,28 @@ var getSpecifictTeddie = function(){
     get("http://localhost:3000/api/teddies/" + id, 
     function(response){
         var teddie = JSON.parse(response)
-        console.log(teddie);
+        
+    // Create element 
+
+        var imgProductDiv = document.createElement("div")
+            imgProductDiv.classList.add("imgProduct");
+        var infoProductDiv = document.createElement("div")
+            infoProductDiv.classList.add("infoProduct");
+        var teddieImg = document.createElement("img")
+            teddieImg.setAttribute("src", teddie.imageUrl);
+        var teddieName = document.createElement("h1")
+            teddieName.textContent(teddie.name);
+        var teddieDescription = document.createElement("p")
+            teddieDescription.textContent(teddie.description);
+        var teddiePrice = document.createElement("span")
+            teddiePrice.classList.add("price")
+            teddiePrice.textContent(teddie.price);
+        var buttonAdd = document.createElement("button")
+            buttonAdd.classList.add("btn");
+
+        var container = document.querySelector(".container2");
+    
+
     },
     function(error){
         console.log(error)
