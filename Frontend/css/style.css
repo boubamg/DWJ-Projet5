@@ -32,8 +32,6 @@ header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-
 }
 
 header nav i {
@@ -141,6 +139,14 @@ main {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas: " imgProduct infoProduct ";
+}
+.container2 .imgProduct {
+    grid-area: imgProduct;
+}
+
+.container2 .infoProduct {
+    grid-area: infoProduct;
 }
 
 /* ---------------------------------------------------------------------------- */

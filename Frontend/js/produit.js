@@ -22,32 +22,52 @@ const id = searchParams.get("id");
 var getSpecifictTeddie = function(){
     get("http://localhost:3000/api/teddies/" + id, 
     function(response){
-        var teddie = JSON.parse(response)
+        var teddie = JSON.parse(response);
         
     // Create element 
 
-        var imgProductDiv = document.createElement("div")
+        var imgProductDiv = document.createElement("div");
             imgProductDiv.classList.add("imgProduct");
-        var infoProductDiv = document.createElement("div")
+
+        var infoProductDiv = document.createElement("div");
             infoProductDiv.classList.add("infoProduct");
-        var teddieImg = document.createElement("img")
+
+        var teddieImg = document.createElement("img");
             teddieImg.setAttribute("src", teddie.imageUrl);
-        var teddieName = document.createElement("h1")
-            teddieName.textContent(teddie.name);
+            teddieImg.classList.add("img-fluid");
+
+        var teddieName = document.createElement("h1");
+            teddieName.textContent = teddie.name;
+
         var teddieDescription = document.createElement("p")
-            teddieDescription.textContent(teddie.description);
-        var teddiePrice = document.createElement("span")
-            teddiePrice.classList.add("price")
-            teddiePrice.textContent(teddie.price);
-        var buttonAdd = document.createElement("button")
+            teddieDescription.textContent = teddie.description;
+
+        var teddiePrice = document.createElement("span");
+            teddiePrice.classList.add("price");
+            teddiePrice.textContent = teddie.price;
+            
+        var buttonAdd = document.createElement("button");
+            buttonAdd.textContent = "Ajouter au panier";
             buttonAdd.classList.add("btn");
 
         var container = document.querySelector(".container2");
     
+    // Create structure
+
+        container.appendChild(imgProductDiv);
+        container.appendChild(infoProductDiv);
+
+        imgProductDiv.appendChild(teddieImg);
+
+        infoProductDiv.appendChild(teddieName);
+        infoProductDiv.appendChild(teddiePrice);
+        infoProductDiv.appendChild(teddieDescription);
+        infoProductDiv.appendChild(buttonAdd)
+
 
     },
     function(error){
-        console.log(error)
+        console.log(error);
     });
 }
 
