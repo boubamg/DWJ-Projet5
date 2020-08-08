@@ -167,6 +167,7 @@ main {
 .container2 .infoProduct button {
     background-color: #F5EAF1;
     border: 1px solid black;
+    margin: 15px;
 }
 
 /* ---------------------------------------------------------------------------- */
@@ -176,6 +177,19 @@ main {
     .container ul li {
         display: flex;
         flex-direction: column;
+    }
+
+    .container2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container2 .imgProduct {
+        flex: 1;
+    }
+    
+    .container2 .infoProduct {
+        flex: 2;
     }
 }
 
