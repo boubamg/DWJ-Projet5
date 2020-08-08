@@ -47,7 +47,7 @@ var getAllTeddies = function(){
             liElement.setAttribute("id", teddies[i]._id);
             imgElement.setAttribute("src", teddies[i].imageUrl);
             h3Element.textContent = teddies[i].name;
-            price.textContent = teddies[i].price + " €";
+            price.textContent = teddies[i].price/100 + " €";
 
             // Add links
             a1Element.setAttribute("href", "./pages/produit.html?id=" + teddies[i]._id);

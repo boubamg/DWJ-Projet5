@@ -149,6 +149,9 @@ main {
 .container2 .infoProduct {
     grid-area: infoProduct;
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .container2 .infoProduct .price {
