@@ -122,20 +122,20 @@ var addToBasket = function(){
             // Save teddie array in localstorage basket
             localStorage.setItem("basket", JSON.stringify(teddieArray));
 
-            getBasketNb();
+            getBasketNb()
        
         });
     }, 
 
     function(error){
-        console.log(error)
+        console.log(error);
     });
 }
 
 var getBasketNb = function(){
      // See Nb Item in Basket
      var basketNb = document.querySelector(".fa-shopping-bag");
-     NbItem = JSON.parse(localStorage.basket);
+     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
      basketNb.textContent = NbItem.length;
 }
 

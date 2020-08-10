@@ -25,7 +25,7 @@ var getAllTeddies = function(){
 
         var container = document.querySelector(".container");
         var ulElement = document.createElement("ul");
-        container.appendChild(ulElement)
+        container.appendChild(ulElement);
 
         // Loop for each Teddie Object
         for(var i = 0; i < teddies.length; i++ ) {
@@ -36,9 +36,9 @@ var getAllTeddies = function(){
             var a2Element = document.createElement("a");
             var buttonAdd = document.createElement("button");
                 buttonAdd.textContent = "Ajouter au panier";
-                buttonAdd.classList.add("btn")
+                buttonAdd.classList.add("btn");
             var imgElement = document.createElement("img");
-            var divElement = document.createElement("div")
+            var divElement = document.createElement("div");
             var h3Element = document.createElement("h3");
             var price = document.createElement("span");
                 price.classList.add("price");
@@ -64,7 +64,7 @@ var getAllTeddies = function(){
             liElement.appendChild(divElement);
             ulElement.appendChild(liElement);
 
-            getBasketNb()
+            getBasketNb();
         }
     }, 
     // Error Params
@@ -76,7 +76,7 @@ var getAllTeddies = function(){
 var getBasketNb = function(){
     // See Nb Item in Basket
     var basketNb = document.querySelector(".fa-shopping-bag");
-    NbItem = JSON.parse(localStorage.basket);
+    NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
     basketNb.textContent = NbItem.length;
 }
 
