@@ -81,8 +81,7 @@ var getSpecifictTeddie = function(){
         infoProductDiv.appendChild(teddieDescription);
         infoProductDiv.appendChild(labelDropdownColor);
         infoProductDiv.appendChild(SelectColor);
-        infoProductDiv.appendChild(buttonAdd)
-
+        infoProductDiv.appendChild(buttonAdd);
 
     },
     function(error){
@@ -90,4 +89,44 @@ var getSpecifictTeddie = function(){
     });
 }
 
+var addToBasket = function(){
+    get("http://localhost:3000/api/teddies/" + id,
+
+    function(response){
+
+        var teddie = JSON.parse(response);
+        var selectColor = document.querySelector("select");
+        var buttonAdd = document.querySelector("button");
+        var basketNb = document.querySelector(".fa-shopping-bag");
+
+        // Click Listener
+        buttonAdd.addEventListener("click", function(){
+
+            // Array of Teddies for basket
+            var teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
+
+            // Teddie object
+            var teddieObj = {
+                id : teddie._id,
+                image : teddie.imageUrl,
+                name : teddie.name,
+                price : teddie.price/100,
+                color : selectColor.value,
+            }
+            
+            // Add Teddie object in Array
+            teddieArray.push(teddieObj);
+
+            // Save teddie array in localstorage basket
+            localStorage.setItem("basket", JSON.stringify(teddieArray));
+       
+        });
+    }, 
+
+    function(error){
+        console.log(error)
+    });
+}
+
 getSpecifictTeddie();
+addToBasket();
