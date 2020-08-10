@@ -63,12 +63,21 @@ var getAllTeddies = function(){
             liElement.appendChild(a1Element);
             liElement.appendChild(divElement);
             ulElement.appendChild(liElement);
+
+            getBasketNb()
         }
     }, 
     // Error Params
     function(error){
         console.log(error)
     })
+}
+
+var getBasketNb = function(){
+    // See Nb Item in Basket
+    var basketNb = document.querySelector(".fa-shopping-bag");
+    NbItem = JSON.parse(localStorage.basket);
+    basketNb.textContent = NbItem.length;
 }
 
 // Function call
