@@ -26,22 +26,28 @@ var getSpecifictTeddie = function(){
         
     // Create element 
 
+        // Image Div
         var imgProductDiv = document.createElement("div");
             imgProductDiv.classList.add("imgProduct");
 
+        // Info Div
         var infoProductDiv = document.createElement("div");
             infoProductDiv.classList.add("infoProduct");
 
+        // teddie Image
         var teddieImg = document.createElement("img");
             teddieImg.setAttribute("src", teddie.imageUrl);
             teddieImg.classList.add("img-fluid");
 
+        // teddie Name
         var teddieName = document.createElement("h1");
             teddieName.textContent = teddie.name + " - Ours en peluche";
 
+        // teddie Description
         var teddieDescription = document.createElement("p")
             teddieDescription.textContent = teddie.description;
 
+        // teddie Price
         var teddiePrice = document.createElement("span");
             teddiePrice.classList.add("price");
             teddiePrice.textContent = "Prix : " + teddie.price/100 + " €";
@@ -62,10 +68,11 @@ var getSpecifictTeddie = function(){
                     SelectColor.appendChild(optionList);
             }
             
-
+        // Button Add To Basket
         var buttonAdd = document.createElement("button");
             buttonAdd.textContent = "Ajouter au panier";
             buttonAdd.classList.add("btn");
+            addToBasket(SelectColor ,buttonAdd, teddie);
 
         var container = document.querySelector(".container2");
     
@@ -91,18 +98,10 @@ var getSpecifictTeddie = function(){
     });
 }
 
-var addToBasket = function(){
-    get("http://localhost:3000/api/teddies/" + id,
-
-    function(response){
-
-        var teddie = JSON.parse(response);
-        var selectColor = document.querySelector("select");
-        var buttonAdd = document.querySelector("button");
-        
+var addToBasket = function(selectColor, button, teddie){
 
         // Click Listener
-        buttonAdd.addEventListener("click", function(){
+        button.addEventListener("click", function(){
 
             // Array of Teddies for basket
             var teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
@@ -125,12 +124,7 @@ var addToBasket = function(){
             getBasketNb()
        
         });
-    }, 
-
-    function(error){
-        console.log(error);
-    });
-}
+    }
 
 var getBasketNb = function(){
      // See Nb Item in Basket
