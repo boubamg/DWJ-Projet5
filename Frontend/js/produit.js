@@ -83,6 +83,8 @@ var getSpecifictTeddie = function(){
         infoProductDiv.appendChild(SelectColor);
         infoProductDiv.appendChild(buttonAdd);
 
+        getBasketNb();
+
     },
     function(error){
         console.log(error);
@@ -97,7 +99,7 @@ var addToBasket = function(){
         var teddie = JSON.parse(response);
         var selectColor = document.querySelector("select");
         var buttonAdd = document.querySelector("button");
-        var basketNb = document.querySelector(".fa-shopping-bag");
+        
 
         // Click Listener
         buttonAdd.addEventListener("click", function(){
@@ -119,6 +121,8 @@ var addToBasket = function(){
 
             // Save teddie array in localstorage basket
             localStorage.setItem("basket", JSON.stringify(teddieArray));
+
+            getBasketNb();
        
         });
     }, 
@@ -126,6 +130,13 @@ var addToBasket = function(){
     function(error){
         console.log(error)
     });
+}
+
+var getBasketNb = function(){
+     // See Nb Item in Basket
+     var basketNb = document.querySelector(".fa-shopping-bag");
+     NbItem = JSON.parse(localStorage.basket);
+     basketNb.textContent = NbItem.length;
 }
 
 getSpecifictTeddie();
