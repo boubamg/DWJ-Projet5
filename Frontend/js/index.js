@@ -21,7 +21,6 @@ var getAllTeddies = function(){
     function(response){
 
         var teddies = JSON.parse(response);
-        console.log(teddies)
 
         var container = document.querySelector(".container");
         var ulElement = document.createElement("ul");
@@ -64,6 +63,7 @@ var getAllTeddies = function(){
             liElement.appendChild(divElement);
             ulElement.appendChild(liElement);
 
+            addToBasket(buttonAdd,teddies[i]);
             getBasketNb();
         }
     }, 
@@ -73,6 +73,35 @@ var getAllTeddies = function(){
     })
 }
 
+// * Function * Add Teddies in Basket
+var addToBasket = function(button,teddie){
+        // Click Listener
+        button.addEventListener("click", function(){
+
+            // Array of Teddies for basket
+            var teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
+
+            // Teddie object
+            var teddieObj = {
+                id : teddie._id,
+                image : teddie.imageUrl,
+                name : teddie.name,
+                price : teddie.price/100,
+                // Default color (first color of array)
+                color : teddie.colors[0],
+            }
+            
+            // Add Teddie object in Array
+            teddieArray.push(teddieObj);
+
+            // Save teddie array in localstorage basket
+            localStorage.setItem("basket", JSON.stringify(teddieArray));
+
+            getBasketNb()
+        });
+    }
+
+// * Function * See Article Nb in Basket
 var getBasketNb = function(){
     // See Nb Item in Basket
     var basketNb = document.querySelector(".fa-shopping-bag");
