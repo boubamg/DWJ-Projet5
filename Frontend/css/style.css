@@ -14,6 +14,10 @@ h1 {
     margin: 20px 0;
 }
 
+p {
+    text-align: center;
+}
+
 /* ------------------------------------- HEADER  / FOOTER ----------------------------------------*/
 
 /* HEADER */
@@ -72,6 +76,11 @@ main {
     -webkit-box-shadow: -4px 122px 20px 121px rgba(245,234,241,0.5);
     -moz-box-shadow: -4px 122px 20px 121px rgba(245,234,241,0.5);
     box-shadow: -4px 122px 20px 121px rgba(245,234,241,0.5);
+}
+
+.container a {
+    background-color: #F5EAF1;
+    margin: 15px;
 }
 
 .container ul {
