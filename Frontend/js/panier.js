@@ -25,6 +25,7 @@ const getBasket = () => {
         ulElement.classList.add("basketList");
 
     container.appendChild(h1Element);
+    DeleteBasket();
     container.appendChild(ulElement);
 
     for(var i = 0; i < basketParsed.length; i++){
@@ -114,6 +115,19 @@ var getBasketNb = function(){
      basketNb.textContent = NbItem.length;
 }
 
-console.log(basketParsed);
+var DeleteBasket = function(){
+
+    var container = document.querySelector(".container");
+
+    var deleteAll = document.createElement("a");
+        deleteAll.textContent = "Vider le panier";
+        deleteAll.href = "javascript:window.location.reload()";
+    
+    deleteAll.addEventListener("click", function(){
+        localStorage.clear();
+    });
+
+    container.appendChild(deleteAll)
+}
 
 basketManagement();
