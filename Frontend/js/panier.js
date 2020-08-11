@@ -43,7 +43,7 @@ const getBasket = () => {
 
         var imgTeddie = document.createElement("img");
             imgTeddie.classList.add("img-fluid");
-        var nameTeddie = document.createElement("h3");
+        var infoTeddie = document.createElement("h3");
         var priceTeddie = document.createElement("span");
             priceTeddie.classList.add("price");
         var deleteButton = document.createElement("a");
@@ -67,13 +67,13 @@ const getBasket = () => {
 
         // Element Content
         imgTeddie.src = selectTeddie.image;
-        nameTeddie.textContent = selectTeddie.name;
-        priceTeddie.textContent = selectTeddie.price;
+        infoTeddie.textContent = selectTeddie.name + " - " + selectTeddie.color;
+        priceTeddie.textContent = selectTeddie.price + '€';
         deleteButton.textContent = "Supprimer";
 
         // Structure
         divImgBasket.appendChild(imgTeddie);
-        divInfoBasket.appendChild(nameTeddie);
+        divInfoBasket.appendChild(infoTeddie);
         divInfoBasket.appendChild(deleteButton);
         divPriceBasket.appendChild(priceTeddie);
 
@@ -92,6 +92,7 @@ const emptyBasket = function(){
 
     var h1Element = document.createElement("h1");
     var emptyBasketText = document.createElement("p");
+        emptyBasketText.classList.add("text-center");
     var homeButton = document.createElement("a");
 
     h1Element.textContent = "Orinoco - Panier";
