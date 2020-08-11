@@ -140,6 +140,10 @@ main {
 
 /* ----------------------------------------------- */
 
+.deleteAllButton {
+    width: max-content;
+}
+
 .container a {
     margin: 15px;
 }

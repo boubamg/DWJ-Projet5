@@ -121,10 +121,21 @@ var DeleteBasket = function(){
 
     var deleteAll = document.createElement("a");
         deleteAll.textContent = "Vider le panier";
+        deleteAll.classList.add("btn", "btn-danger", "deleteAllButton");
+        
         deleteAll.href = "javascript:window.location.reload()";
     
     deleteAll.addEventListener("click", function(){
-        localStorage.clear();
+        // Array of Teddies for basket
+        var teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
+            
+        // Delete Teddie object in Array
+        teddieArray.splice(0);
+
+        // Save teddie array in localstorage basket
+        localStorage.setItem("basket", JSON.stringify(teddieArray));
+
+        getBasketNb()
     });
 
     container.appendChild(deleteAll)
