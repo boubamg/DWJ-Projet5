@@ -2,10 +2,17 @@ const basket = localStorage.getItem('basket');
 
 const basketManagement = function(){
     if (basket){
+        getBasketNb();
         getBasket();
+
     } else {
         emptyBasket();
     }
+}
+
+const getBasket = () => {
+
+    
 }
 
 const emptyBasket = function(){
@@ -26,6 +33,14 @@ const emptyBasket = function(){
     container.appendChild(emptyBasketText);
     container.appendChild(homeButton);
 
+}
+
+
+var getBasketNb = function(){
+     // See Nb Item in Basket
+     var basketNb = document.querySelector(".fa-shopping-bag");
+     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
+     basketNb.textContent = NbItem.length;
 }
 
 basketManagement();
