@@ -25,7 +25,7 @@ const getBasket = () => {
         ulElement.classList.add("basketList");
 
     container.appendChild(h1Element);
-    DeleteBasket();
+    deleteBasket();
     container.appendChild(ulElement);
 
     for(var i = 0; i < basketParsed.length; i++){
@@ -50,7 +50,6 @@ const getBasket = () => {
         var deleteButton = document.createElement("a");
             deleteButton.href = "javascript:window.location.reload()";
 
-
         deleteButton.addEventListener("click", function(){
 
             // Array of Teddies for basket
@@ -65,7 +64,6 @@ const getBasket = () => {
             getBasketNb()
         });
         
-
         // Element Content
         imgTeddie.src = selectTeddie.image;
         infoTeddie.textContent = selectTeddie.name + " - " + selectTeddie.color;
@@ -115,7 +113,7 @@ var getBasketNb = function(){
      basketNb.textContent = NbItem.length;
 }
 
-var DeleteBasket = function(){
+var deleteBasket = function(){
 
     var container = document.querySelector(".container");
 
@@ -139,6 +137,14 @@ var DeleteBasket = function(){
     });
 
     container.appendChild(deleteAll)
+}
+
+var getTotalPrice = function(){
+    var price = 0;
+    for(var i = 0; i < basketParsed.length; i++){
+        price += basketParsed[i].price;
+    }
+    return price;
 }
 
 basketManagement();
