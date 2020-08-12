@@ -23,10 +23,14 @@ const getBasket = () => {
         h1Element.textContent = "Orinoco - Panier";
     var ulElement = document.createElement("ul");
         ulElement.classList.add("basketList");
+    var totalPrice = document.createElement("p");
+        totalPrice.classList.add("totalPrice", "text-right");
+        totalPrice.textContent = "Montant Total : " + getTotalPrice() + "€";
 
     container.appendChild(h1Element);
     deleteBasket();
     container.appendChild(ulElement);
+    container.appendChild(totalPrice);
 
     for(var i = 0; i < basketParsed.length; i++){
 
@@ -40,7 +44,7 @@ const getBasket = () => {
         var divInfoBasket = document.createElement("div");
             divInfoBasket.classList.add("infoBasket");
         var divPriceBasket = document.createElement("div");
-            divPriceBasket.classList.add("priceBasket")
+            divPriceBasket.classList.add("priceBasket");
 
         var imgTeddie = document.createElement("img");
             imgTeddie.classList.add("img-fluid");
