@@ -13,20 +13,11 @@ const basketManagement = function(){
     }
 }
 
-var post = function(url, stringifyObject, resolve, reject){
-        var request = new XMLHttpRequest();
-        
-        request.onreadystatechange = function(){
-            if(this.readyState === 4){
-                resolve(this.responseText);
-            } else {
-                reject(request);
-            }
-        }
-        request.open("POST", url);
-        request.setRequestHeader('Accept','application/json');
-        request.setRequestHeader('Content-Type', 'application/json')
-        request.send(stringifyObject);
+ // See Nb Item in Basket
+var getBasketNb = function(){ 
+    var basketNb = document.querySelector(".fa-shopping-bag");
+    NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
+    basketNb.textContent = NbItem.length;
 }
 
 // Get all articles in Basket
@@ -105,35 +96,7 @@ const getBasket = () => {
     
 }
 
-const emptyBasket = function(){
-
-    var container = document.querySelector(".container");
-
-    var h1Element = document.createElement("h1");
-    var emptyBasketText = document.createElement("p");
-        emptyBasketText.classList.add("text-center");
-    var homeButton = document.createElement("a");
-
-    h1Element.textContent = "Orinoco - Panier";
-    emptyBasketText.textContent = "Votre panier est vide, cliquez ci-dessous pour voir nos articles.";
-    homeButton.textContent = "Tous les articles";
-    homeButton.classList.add("btn");
-    homeButton.href = "../index.html";
-
-    container.appendChild(h1Element);
-    container.appendChild(emptyBasketText);
-    container.appendChild(homeButton);
-
-    disableForm();
-}
-
- // See Nb Item in Basket
-var getBasketNb = function(){ 
-     var basketNb = document.querySelector(".fa-shopping-bag");
-     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
-     basketNb.textContent = NbItem.length;
-}
-
+// Order teddies
 var orderTeddie = async function(){
 
     const inputFirstname = document.querySelector("#firstname");
@@ -168,9 +131,51 @@ var orderTeddie = async function(){
         }, function(error){
             console.log(error);
         });
+
+        window.location.href = "confirmation.html";
         
     })
     
+}
+
+const emptyBasket = function(){
+
+    var container = document.querySelector(".container");
+
+    var h1Element = document.createElement("h1");
+    var emptyBasketText = document.createElement("p");
+        emptyBasketText.classList.add("text-center");
+    var homeButton = document.createElement("a");
+
+    h1Element.textContent = "Orinoco - Panier";
+    emptyBasketText.textContent = "Votre panier est vide, cliquez ci-dessous pour voir nos articles.";
+    homeButton.textContent = "Tous les articles";
+    homeButton.classList.add("btn");
+    homeButton.href = "../index.html";
+
+    container.appendChild(h1Element);
+    container.appendChild(emptyBasketText);
+    container.appendChild(homeButton);
+
+    disableForm();
+}
+
+// ---------------------------------------------------------------------------------
+
+var post = function(url, stringifyObject, resolve, reject){
+    var request = new XMLHttpRequest();
+    
+    request.onreadystatechange = function(){
+        if(this.readyState === 4){
+            resolve(this.responseText);
+        } else {
+            reject(request);
+        }
+    }
+    request.open("POST", url);
+    request.setRequestHeader('Accept','application/json');
+    request.setRequestHeader('Content-Type', 'application/json')
+    request.send(stringifyObject);
 }
 
 var deleteBasket = function(){
