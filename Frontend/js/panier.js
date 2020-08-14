@@ -7,7 +7,7 @@ const basketManagement = function(){
     if (basketParsed != 0){
         getBasketNb();
         getBasket();
-
+        orderteddie();
     } else {
         emptyBasket();
     }
@@ -108,6 +108,7 @@ const emptyBasket = function(){
     container.appendChild(emptyBasketText);
     container.appendChild(homeButton);
 
+    disableForm();
 }
 
  // See Nb Item in Basket
@@ -116,6 +117,7 @@ var getBasketNb = function(){
      NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
      basketNb.textContent = NbItem.length;
 }
+
 
 var deleteBasket = function(){
 
@@ -149,6 +151,17 @@ var getTotalPrice = function(){
         price += basketParsed[i].price;
     }
     return price;
+}
+
+var disableForm = function(){
+    
+    var allInput = document.querySelectorAll("input");
+    console.log(allInput);
+    allInput.forEach(function(input){
+        input.setAttribute("disabled","");
+    });
+    const orderingButton = document.querySelector("#orderingButton");
+    orderingButton.setAttribute("disabled","");
 }
 
 basketManagement();
