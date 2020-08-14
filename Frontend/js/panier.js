@@ -7,10 +7,26 @@ const basketManagement = function(){
     if (basketParsed != 0){
         getBasketNb();
         getBasket();
-        orderteddie();
+        orderTeddie();
     } else {
         emptyBasket();
     }
+}
+
+var post = function(url, stringifyObject, resolve, reject){
+        var request = new XMLHttpRequest();
+        
+        request.onreadystatechange = function(){
+            if(this.readyState === 4){
+                resolve(this.responseText);
+            } else {
+                reject(request);
+            }
+        }
+        request.open("POST", url);
+        request.setRequestHeader('Accept','application/json');
+        request.setRequestHeader('Content-Type', 'application/json')
+        request.send(stringifyObject);
 }
 
 // Get all articles in Basket
@@ -118,6 +134,44 @@ var getBasketNb = function(){
      basketNb.textContent = NbItem.length;
 }
 
+var orderTeddie = async function(){
+
+    const inputFirstname = document.querySelector("#firstname");
+    const inputLastname = document.querySelector("#lastname");
+    const inputEmail = document.querySelector("#email");
+    const inputAddress = document.querySelector("#address");
+    const inputCity = document.querySelector("#city");
+    const orderingForm = document.querySelector("form");
+
+    orderingForm.addEventListener("submit", async function(event){
+        event.preventDefault();
+
+        const contact = {
+            firstName: inputFirstname.value,
+            lastName: inputLastname.value,
+            address: inputAddress.value,
+            city: inputCity.value,
+            email: inputEmail.value,
+        }
+
+        const products = [];
+        for(i = 0; i < basketParsed.length; i++){
+            products.push(basketParsed[i].id);
+        }  
+
+        var orderingInformation = {contact, products}
+
+        StringOrderingInformation = JSON.stringify(orderingInformation)
+
+        post("http://localhost:3000/api/teddies/order", StringOrderingInformation, function(response){
+            localStorage.setItem("order", response);
+        }, function(error){
+            console.log(error);
+        });
+        
+    })
+    
+}
 
 var deleteBasket = function(){
 
