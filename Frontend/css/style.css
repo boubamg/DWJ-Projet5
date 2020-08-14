@@ -9,6 +9,10 @@ body {
     background-attachment: fixed;
 }
 
+section {
+    margin: 20px 0;
+}
+
 h1 {
     text-align: center;
     margin: 20px 0;

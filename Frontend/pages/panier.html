@@ -26,7 +26,38 @@
         </section>
        
         <section id="form">
+            <div class="container">
 
+                <h2 class="text-center">Formulaire de commande</h2>
+                <form>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" class="form-control" id="firstname" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="lastname">Nom</label>
+                        <input type="text" class="form-control" id="lastname" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                      </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-9">
+                            <label for="address">Addresse</label>
+                            <input type="text" class="form-control" id="Address" placeholder="1234 Main St" required>
+                          </div>
+                        <div class="form-group col-md-3">
+                            <label for="city">Ville</label>
+                            <input type="text" class="form-control" id="city" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                  </form>  
+                  
+            </div>
         </section>
     </main>
 
