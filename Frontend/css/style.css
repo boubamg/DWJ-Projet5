@@ -18,6 +18,10 @@ h1 {
     margin: 20px 0;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 /* ------------------------------------- HEADER  / FOOTER ----------------------------------------*/
 
 /* HEADER */
@@ -192,6 +196,42 @@ main {
    font-weight: bold;
 }
 
+
+.validate {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.validate div {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.validate .thankyou {
+    font-size: 20px;
+}
+
+svg {
+    color: green;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 60%;
+    margin: 15px auto;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+   
+
+}
 
 /* -------------------------------------- */
 

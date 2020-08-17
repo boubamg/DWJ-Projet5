@@ -7,14 +7,14 @@ var displayCommand = () => {
     var thanksDiv = document.createElement("div");
         thanksDiv.classList.add("thankyou");
     var thanksP = document.createElement("p");
-        thanksP.textContent = "Merci " + ordered.contact.firstName + ". À bientot !" 
+        thanksP.innerHTML = "Merci " + ordered.contact.firstName + " :) <br/> À bientot !" 
     thanksDiv.appendChild(thanksP);
 
     // Create Element * SECTION SUMMARY *
     var orderId = document.createElement("p");
-        orderId.textContent = ordered.orderId;
+        orderId.innerHTML = "<span class='bold'>Numéro de commande :</span> <br/>" + ordered.orderId;
     var totalPrice = document.createElement("p");
-        totalPrice.textContent = getTotalPrice();
+        totalPrice.innerHTML = "<span class='bold'>Prix Total :</span> <br/>" + getTotalPrice() + " €";
 
     var orderIdDiv = document.createElement("div");
         orderIdDiv.classList.add("orderId");
