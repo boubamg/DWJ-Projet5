@@ -142,16 +142,6 @@ main {
 
 /* ----------------------------------------------- */
 
-.deleteAllButton {
-    width: max-content;
-}
-
-.totalPrice {
-   border-top: 1px solid black;
-   margin: 15px 0;
-   padding: 15px 0;
-   font-weight: bold;
-}
 
 .container a {
     margin: 15px;
@@ -190,6 +180,19 @@ main {
     justify-content: space-evenly;
 }
 
+
+.deleteAllButton {
+    width: max-content;
+}
+
+.totalPrice {
+   border-top: 1px solid black;
+   margin: 15px 0;
+   padding: 15px 0;
+   font-weight: bold;
+}
+
+
 /* -------------------------------------- */
 
 .container2 {
@@ -200,6 +203,7 @@ main {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: " imgProduct infoProduct ";
 }
+
 .container2 .imgProduct {
     grid-area: imgProduct;
     padding: 15px;
