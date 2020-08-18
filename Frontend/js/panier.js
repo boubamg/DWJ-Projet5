@@ -1,6 +1,6 @@
 // Articles in Basket
-const basket = localStorage.getItem('basket');
-const basketParsed = JSON.parse(basket);
+const basket = localStorage.getItem('basket') ? localStorage.getItem('basket') : "";
+const basketParsed = localStorage.getItem('basket') ? JSON.parse(basket) : "";
 
 // Main Function 
 const basketManagement = function(){
@@ -106,7 +106,7 @@ var orderTeddie = async function(){
     const inputCity = document.querySelector("#city");
     const orderingForm = document.querySelector("form");
 
-    orderingForm.addEventListener("submit", async function(event){
+    orderingForm.addEventListener("submit", function(event){
         event.preventDefault();
 
         const contact = {
@@ -128,12 +128,11 @@ var orderTeddie = async function(){
 
         post("http://localhost:3000/api/teddies/order", StringOrderingInformation, function(response){
             localStorage.setItem("order", response);
+            window.location.href = "confirmation.html";
+ 
         }, function(error){
             console.log(error);
         });
-
-        window.location.href = "confirmation.html";
-        
     })
     
 }
@@ -189,16 +188,8 @@ var deleteBasket = function(){
         deleteAll.href = "javascript:window.location.reload()";
     
     deleteAll.addEventListener("click", function(){
-        // Array of Teddies for basket
-        var teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
-            
-        // Delete Teddie object in Array
-        teddieArray.splice(0);
-
-        // Save teddie array in localstorage basket
-        localStorage.setItem("basket", JSON.stringify(teddieArray));
-
-        getBasketNb()
+        localStorage.clear();
+        getBasketNb();
     });
 
     container.appendChild(deleteAll)
@@ -215,7 +206,6 @@ var getTotalPrice = function(){
 var disableForm = function(){
     
     var allInput = document.querySelectorAll("input");
-    console.log(allInput);
     allInput.forEach(function(input){
         input.setAttribute("disabled","");
     });
