@@ -4,7 +4,9 @@ const basketParsed = localStorage.getItem("basket") ? JSON.parse(localStorage.ge
 
 var displayCommand = () => {
 
-    // Create Element * SECTION VALIDATE *
+    if(localStorage.getItem("order") && localStorage.getItem("basket")){
+
+        // Create Element * SECTION VALIDATE *
     var thanksDiv = document.createElement("div");
         thanksDiv.classList.add("thankyou");
 
@@ -40,6 +42,28 @@ var displayCommand = () => {
     summarySection.appendChild(totalPriceDiv);
 
     localStorage.clear();
+
+    } else {
+
+        var svgElement = document.querySelector("svg");
+        svgElement.classList.add("d-none");
+        var h2Error = document.createElement("h2");
+        h2Error.textContent = "Une erreur s'est produite";
+        h2Error.classList.add("error");
+
+        var SummarySection = document.querySelector(".summary");
+        SummarySection.appendChild(h2Error);
+    }
+
+    var backHomeLink = document.createElement("a");
+        backHomeLink.href = "../index.html";
+        backHomeLink.textContent = "Retour à l'accueil";
+        backHomeLink.classList.add("text-center")
+
+    var container = document.querySelector(".container");
+        container.appendChild(backHomeLink)
+
+    
 }
 
 var getTotalPrice = function(){
