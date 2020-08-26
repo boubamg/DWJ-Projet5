@@ -13,7 +13,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
 
 // Display Specific Teddie
 const displaySpecifictTeddie = (teddie) => {
-    
+
     // Create element 
 
         // Image Div
@@ -82,6 +82,7 @@ const displaySpecifictTeddie = (teddie) => {
 
 }
 
+// * Function * Add Teddies in Basket
 var addToBasket = function(selectColor, button, teddie){
 
         // Click Listener
@@ -110,6 +111,7 @@ var addToBasket = function(selectColor, button, teddie){
         });
 }
 
+// * Function * See Article Nb in Basket
 var getBasketNb = function(){
      // See Nb Item in Basket
      var basketNb = document.querySelector(".fa-shopping-bag");
