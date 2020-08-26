@@ -1,29 +1,19 @@
-// Connect to API
-var get = function(url, success, error){
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(this.readyState === 4 && this.status == 200){
-            success(this.responseText);
-        } else {
-            error(request)
-        }
-    }
-    request.open("GET", url);
-    request.send();
-}
-
 // Find 'id' parameter in Url 
 const urlParams = window.location.search;
 const searchParams = new URLSearchParams(urlParams);
 const id = searchParams.get("id");
 
-// Display Specific Teddie
+// Connect to API
+fetch("http://localhost:3000/api/teddies/" + id)
+    .then(response => response.json())
+    .then(teddie => {
+        displaySpecifictTeddie(teddie);
+        getBasketNb();
+    }).catch(err => console.log(err))
 
-var getSpecifictTeddie = function(){
-    get("http://localhost:3000/api/teddies/" + id, 
-    function(response){
-        var teddie = JSON.parse(response);
-        
+// Display Specific Teddie
+const displaySpecifictTeddie = (teddie) => {
+    
     // Create element 
 
         // Image Div
@@ -90,12 +80,6 @@ var getSpecifictTeddie = function(){
         infoProductDiv.appendChild(SelectColor);
         infoProductDiv.appendChild(buttonAdd);
 
-        getBasketNb();
-
-    },
-    function(error){
-        console.log(error);
-    });
 }
 
 var addToBasket = function(selectColor, button, teddie){
@@ -124,7 +108,7 @@ var addToBasket = function(selectColor, button, teddie){
             getBasketNb()
        
         });
-    }
+}
 
 var getBasketNb = function(){
      // See Nb Item in Basket
@@ -132,6 +116,3 @@ var getBasketNb = function(){
      NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
      basketNb.textContent = NbItem.length;
 }
-
-getSpecifictTeddie();
-addToBasket();
