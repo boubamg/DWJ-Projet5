@@ -3,7 +3,7 @@ const basket = localStorage.getItem('basket') ? localStorage.getItem('basket') :
 const basketParsed = localStorage.getItem('basket') ? JSON.parse(basket) : "";
 
 // Main Function 
-const basketManagement = function(){
+const basketManagement = () => {
     if (basketParsed != 0){
         getBasketNb();
         getBasket();
@@ -14,7 +14,7 @@ const basketManagement = function(){
 }
 
  // See Nb Item in Basket
-var getBasketNb = function(){ 
+const getBasketNb = () => { 
     var basketNb = document.querySelector(".fa-shopping-bag");
     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
     basketNb.textContent = NbItem.length;
@@ -96,8 +96,26 @@ const getBasket = () => {
     
 }
 
+const deleteBasket = () => {
+
+    var container = document.querySelector(".container");
+
+    var deleteAll = document.createElement("a");
+        deleteAll.textContent = "Vider le panier";
+        deleteAll.classList.add("btn", "btn-danger", "deleteAllButton");
+        
+        deleteAll.href = "javascript:window.location.reload()";
+    
+    deleteAll.addEventListener("click", function(){
+        localStorage.clear();
+        getBasketNb();
+    });
+
+    container.appendChild(deleteAll)
+}
+
 // Order teddies
-var orderTeddie = async function(){
+const orderTeddie = () => {
 
     const inputFirstname = document.querySelector("#firstname");
     const inputLastname = document.querySelector("#lastname");
@@ -126,18 +144,33 @@ var orderTeddie = async function(){
 
         StringOrderingInformation = JSON.stringify(orderingInformation)
 
-        post("http://localhost:3000/api/teddies/order", StringOrderingInformation, function(response){
-            localStorage.setItem("order", response);
+        fetch("http://localhost:3000/api/teddies/order",{
+            method: 'POST',
+            body: StringOrderingInformation,
+            headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(order =>  {
+            localStorage.setItem("order", JSON.stringify(order));
             window.location.href = "confirmation.html";
- 
-        }, function(error){
-            console.log(error);
-        });
+        })
+        .catch(err => console.log(err))
     })
     
+} 
+
+// Get total order price 
+const getTotalPrice = () => {
+    var price = 0;
+    for(var i = 0; i < basketParsed.length; i++){
+        price += basketParsed[i].price;
+    }
+    return price;
 }
 
-const emptyBasket = function(){
+// If basket is empty : 
+
+const emptyBasket = () => {
 
     var container = document.querySelector(".container");
 
@@ -158,52 +191,7 @@ const emptyBasket = function(){
 
     disableForm();
 }
-
-// ---------------------------------------------------------------------------------
-
-var post = function(url, stringifyObject, resolve, reject){
-    var request = new XMLHttpRequest();
-    
-    request.onreadystatechange = function(){
-        if(this.readyState === 4){
-            resolve(this.responseText);
-        } else {
-            reject(request);
-        }
-    }
-    request.open("POST", url);
-    request.setRequestHeader('Accept','application/json');
-    request.setRequestHeader('Content-Type', 'application/json')
-    request.send(stringifyObject);
-}
-
-var deleteBasket = function(){
-
-    var container = document.querySelector(".container");
-
-    var deleteAll = document.createElement("a");
-        deleteAll.textContent = "Vider le panier";
-        deleteAll.classList.add("btn", "btn-danger", "deleteAllButton");
-        
-        deleteAll.href = "javascript:window.location.reload()";
-    
-    deleteAll.addEventListener("click", function(){
-        localStorage.clear();
-        getBasketNb();
-    });
-
-    container.appendChild(deleteAll)
-}
-
-var getTotalPrice = function(){
-    var price = 0;
-    for(var i = 0; i < basketParsed.length; i++){
-        price += basketParsed[i].price;
-    }
-    return price;
-}
-
-var disableForm = function(){
+const disableForm = () => {
     
     var allInput = document.querySelectorAll("input");
     allInput.forEach(function(input){
