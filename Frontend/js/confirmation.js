@@ -4,10 +4,18 @@ const basketParsed = localStorage.getItem("basket") ? JSON.parse(localStorage.ge
 
 var displayCommand = () => {
 
-    if(localStorage.getItem("order") && localStorage.getItem("basket")){
+    if (localStorage.getItem("order") && localStorage.getItem("basket")){
+        validMessage()
+        localStorage.clear();
+    } else {
+        errorMesage()
+    }
+    backtoHome()
+}
 
+const validMessage = () => {
         // Create Element * SECTION VALIDATE *
-    var thanksDiv = document.createElement("div");
+        var thanksDiv = document.createElement("div");
         thanksDiv.classList.add("thankyou");
 
     var thanksP = document.createElement("p");
@@ -40,21 +48,20 @@ var displayCommand = () => {
 
     summarySection.appendChild(orderIdDiv);
     summarySection.appendChild(totalPriceDiv);
+}
 
-    localStorage.clear();
+const errorMesage = () => {
+    var svgElement = document.querySelector("svg");
+    svgElement.classList.add("d-none");
+    var h2Error = document.createElement("h2");
+    h2Error.textContent = "Une erreur s'est produite";
+    h2Error.classList.add("error");
 
-    } else {
+    var SummarySection = document.querySelector(".summary");
+    SummarySection.appendChild(h2Error);
+}
 
-        var svgElement = document.querySelector("svg");
-        svgElement.classList.add("d-none");
-        var h2Error = document.createElement("h2");
-        h2Error.textContent = "Une erreur s'est produite";
-        h2Error.classList.add("error");
-
-        var SummarySection = document.querySelector(".summary");
-        SummarySection.appendChild(h2Error);
-    }
-
+const backtoHome = () => {
     var backHomeLink = document.createElement("a");
         backHomeLink.href = "../index.html";
         backHomeLink.textContent = "Retour à l'accueil";
@@ -62,9 +69,9 @@ var displayCommand = () => {
 
     var container = document.querySelector(".container");
         container.appendChild(backHomeLink);
-
 }
 
+// Get total order price 
 var getTotalPrice = function(){
     var price = 0;
     for(var i = 0; i < basketParsed.length; i++){
