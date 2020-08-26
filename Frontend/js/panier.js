@@ -127,34 +127,39 @@ const orderTeddie = () => {
     orderingForm.addEventListener("submit", function(event){
         event.preventDefault();
 
-        const contact = {
-            firstName: inputFirstname.value,
-            lastName: inputLastname.value,
-            address: inputAddress.value,
-            city: inputCity.value,
-            email: inputEmail.value,
-        }
+        if (isValidText(inputFirstname.value) && isValidText(inputLastname.value) && isValidText(inputCity.value) && 
+            isValidEmail(inputEmail.value) && isValidAddress(inputAddress.value)){
+                const contact = {
+                    firstName: inputFirstname.value,
+                    lastName: inputLastname.value,
+                    address: inputAddress.value,
+                    city: inputCity.value,
+                    email: inputEmail.value,
+                }
+                const products = [];
+                for(i = 0; i < basketParsed.length; i++){
+                    products.push(basketParsed[i].id);
+                }  
+        
+                var orderingInformation = {contact, products}
+        
+                StringOrderingInformation = JSON.stringify(orderingInformation)
 
-        const products = [];
-        for(i = 0; i < basketParsed.length; i++){
-            products.push(basketParsed[i].id);
-        }  
+                fetch("http://localhost:3000/api/teddies/order",{
+                    method: 'POST',
+                    body: StringOrderingInformation,
+                    headers: {'Content-Type': 'application/json'}
+                })
+                .then(response => response.json())
+                .then(order =>  {
+                    localStorage.setItem("order", JSON.stringify(order));
+                    window.location.href = "confirmation.html";
+                })
+                .catch(err => console.log(err))
 
-        var orderingInformation = {contact, products}
-
-        StringOrderingInformation = JSON.stringify(orderingInformation)
-
-        fetch("http://localhost:3000/api/teddies/order",{
-            method: 'POST',
-            body: StringOrderingInformation,
-            headers: {'Content-Type': 'application/json'}
-        })
-        .then(response => response.json())
-        .then(order =>  {
-            localStorage.setItem("order", JSON.stringify(order));
-            window.location.href = "confirmation.html";
-        })
-        .catch(err => console.log(err))
+            } else {
+                alert("error")
+            }
     })
     
 } 
@@ -199,6 +204,23 @@ const disableForm = () => {
     });
     const orderingButton = document.querySelector("#orderingButton");
     orderingButton.setAttribute("disabled","");
+}
+
+// Verification function
+
+function isValidText(value) {
+    const regex = /[A-Za-z]{2,}/
+    return regex.test(value);
+}
+
+function isValidEmail(value) {
+    const regex = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/
+    return regex.test(value);
+}
+
+function isValidAddress(value) {
+    const regex = /[A-Za-z0-9 ]+/
+    return regex.test(value);
 }
 
 basketManagement();
