@@ -61,9 +61,8 @@ var displayCommand = () => {
         backHomeLink.classList.add("text-center")
 
     var container = document.querySelector(".container");
-        container.appendChild(backHomeLink)
+        container.appendChild(backHomeLink);
 
-    
 }
 
 var getTotalPrice = function(){

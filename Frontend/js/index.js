@@ -1,28 +1,14 @@
-// * MAIN Function * Connection to API
-var get = function(url, success, error){
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if (this.readyState === 4 && this.status == 200){
-            success(this.responseText);
-        } else {
-            error(request);
-        }
-    }
-    request.open("GET", url);
-    request.send();
-}
+// Connexion to API
+fetch("http://localhost:3000/api/teddies")
+    .then(response => response.json())
+    .then(teddies => {
+        displayTeddies(teddies);
+        getBasketNb();
+    }).catch(err => console.log(err))
 
 // * Function * Display Teddies
-var getAllTeddies = function(){
-
-    get("http://localhost:3000/api/teddies",
-
-    // Success Params
-    function(response){
-
-        var teddies = JSON.parse(response);
-
-        var container = document.querySelector(".container");
+const displayTeddies = (teddies) => {
+     var container = document.querySelector(".container");
         var ulElement = document.createElement("ul");
         container.appendChild(ulElement);
 
@@ -36,6 +22,10 @@ var getAllTeddies = function(){
             var buttonAdd = document.createElement("button");
                 buttonAdd.textContent = "Ajouter au panier";
                 buttonAdd.classList.add("btn");
+
+                // function for add specific teddie in basket
+                addToBasket(buttonAdd,teddies[i]);
+
             var imgElement = document.createElement("img");
             var divElement = document.createElement("div");
             var h3Element = document.createElement("h3");
@@ -62,19 +52,11 @@ var getAllTeddies = function(){
             liElement.appendChild(a1Element);
             liElement.appendChild(divElement);
             ulElement.appendChild(liElement);
-
-            addToBasket(buttonAdd,teddies[i]);
-            getBasketNb();
         }
-    }, 
-    // Error Params
-    function(error){
-        console.log(error)
-    })
 }
 
 // * Function * Add Teddies in Basket
-var addToBasket = function(button,teddie){
+const addToBasket = (button,teddie) => {
         // Click Listener
         button.addEventListener("click", function(){
 
@@ -99,15 +81,12 @@ var addToBasket = function(button,teddie){
 
             getBasketNb()
         });
-    }
+}
 
 // * Function * See Article Nb in Basket
-var getBasketNb = function(){
+const getBasketNb = () => {
     // See Nb Item in Basket
     var basketNb = document.querySelector(".fa-shopping-bag");
     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
     basketNb.textContent = NbItem.length;
 }
-
-// Function call
-getAllTeddies();
