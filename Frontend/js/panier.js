@@ -1,7 +1,6 @@
 // Articles in Basket
 const basketParsed = localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : "";
 
-
 // Main Function 
 const basketManagement = () => {
     if (basketParsed != 0){
@@ -11,13 +10,6 @@ const basketManagement = () => {
     } else {
         emptyBasket();
     }
-}
-
- // See Nb Item in Basket
-const getBasketNb = () => { 
-    let basketNb = document.querySelector(".fa-shopping-bag");
-    NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
-    basketNb.textContent = NbItem.length;
 }
 
 // Get all articles in Basket
@@ -163,16 +155,6 @@ const orderTeddie = () => {
     })
     
 } 
-
-// Get total order price 
-const getTotalPrice = () => {
-    let price = 0;
-    for(let i = 0; i < basketParsed.length; i++){
-        price += basketParsed[i].price;
-    }
-    return price;
-}
-
 // If basket is empty : 
 
 const emptyBasket = () => {

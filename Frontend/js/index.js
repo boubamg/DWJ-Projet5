@@ -79,16 +79,5 @@ const addToBasket = (teddie) => {
             // Save teddie array in localstorage basket
             localStorage.setItem("basket", JSON.stringify(teddieArray));
 
-            displayBasketNb(document.querySelector(".fa-shopping-bag"))
-}
-
-// * Function * See Article Nb in Basket
-const getBasketNb = () => {
-    NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
-    return NbItem.length;
-}
-
-// * Function * Display Article Nb in Basket
-const displayBasketNb = (basket) => {
-    basket.textContent = getBasketNb();
+            displayBasketNb(document.querySelector(".fa-shopping-bag"));
 }

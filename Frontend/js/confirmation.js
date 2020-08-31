@@ -71,13 +71,4 @@ const backtoHome = () => {
         container.appendChild(backHomeLink);
 }
 
-// Get total order price 
-const getTotalPrice = function(){
-    let price = 0;
-    for(let i = 0; i < basketParsed.length; i++){
-        price += basketParsed[i].price;
-    }
-    return price;
-}
-
 displayCommand();

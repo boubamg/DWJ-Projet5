@@ -62,7 +62,12 @@ const displaySpecifictTeddie = (teddie) => {
         let buttonAdd = document.createElement("button");
             buttonAdd.textContent = "Ajouter au panier";
             buttonAdd.classList.add("btn");
-            addToBasket(SelectColor ,buttonAdd, teddie);
+
+            buttonAdd.addEventListener("click", function(){
+                addToBasket(SelectColor, teddie);
+            });
+
+          
 
         let container = document.querySelector(".container2");
     
@@ -83,38 +88,27 @@ const displaySpecifictTeddie = (teddie) => {
 }
 
 // * Function * Add Teddies in Basket
-const addToBasket = function(selectColor, button, teddie){
+const addToBasket = function(selectColor, teddie){
 
-        // Click Listener
-        button.addEventListener("click", function(){
+    // Array of Teddies for basket
+        let teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
 
-            // Array of Teddies for basket
-            let teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
-
-            // Teddie object
-            let teddieObj = {
-                id : teddie._id,
-                image : teddie.imageUrl,
-                name : teddie.name,
-                price : teddie.price/100,
-                color : selectColor.value,
-            }
+    // Teddie object
+        let teddieObj = {
+            id : teddie._id,
+            image : teddie.imageUrl,
+            name : teddie.name,
+            price : teddie.price/100,
+            color : selectColor.value,
+        }
             
-            // Add Teddie object in Array
-            teddieArray.push(teddieObj);
+    // Add Teddie object in Array
+        teddieArray.push(teddieObj);
 
-            // Save teddie array in localstorage basket
-            localStorage.setItem("basket", JSON.stringify(teddieArray));
+    // Save teddie array in localstorage basket
+        localStorage.setItem("basket", JSON.stringify(teddieArray));
 
-            getBasketNb()
-       
-        });
+        displayBasketNb(document.querySelector(".fa-shopping-bag"));
+
 }
 
-// * Function * See Article Nb in Basket
-const getBasketNb = function(){
-     // See Nb Item in Basket
-     let basketNb = document.querySelector(".fa-shopping-bag");
-     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
-     basketNb.textContent = NbItem.length;
-}
