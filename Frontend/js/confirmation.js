@@ -14,8 +14,9 @@ const displayCommand = () => {
 }
 
 const validMessage = () => {
-        // Create Element * SECTION VALIDATE *
-        let thanksDiv = document.createElement("div");
+    
+    // Create Element * SECTION VALIDATE *
+    let thanksDiv = document.createElement("div");
         thanksDiv.classList.add("thankyou");
 
     let thanksP = document.createElement("p");

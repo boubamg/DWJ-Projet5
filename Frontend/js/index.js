@@ -25,7 +25,7 @@ const displayTeddies = (teddies) => {
 
                 buttonAdd.addEventListener("click", function() {
                     // function for add specific teddie in basket
-                    addToBasket(teddies[i]);
+                    addToBasketDefault(teddies[i]);
                 });
 
             let imgElement = document.createElement("img");
@@ -58,7 +58,7 @@ const displayTeddies = (teddies) => {
 }
 
 // * Function * Add Teddies in Basket
-const addToBasket = (teddie) => {
+const addToBasketDefault = (teddie) => {
 
             // Array of Teddies for basket
             let teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
