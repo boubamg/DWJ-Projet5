@@ -23,8 +23,10 @@ const displayTeddies = (teddies) => {
                 buttonAdd.textContent = "Ajouter au panier";
                 buttonAdd.classList.add("btn");
 
-                // function for add specific teddie in basket
-                addToBasket(buttonAdd,teddies[i]);
+                buttonAdd.addEventListener("click", function() {
+                    // function for add specific teddie in basket
+                    addToBasket(teddies[i]);
+                });
 
             let imgElement = document.createElement("img");
             let divElement = document.createElement("div");
@@ -56,9 +58,7 @@ const displayTeddies = (teddies) => {
 }
 
 // * Function * Add Teddies in Basket
-const addToBasket = (button,teddie) => {
-        // Click Listener
-        button.addEventListener("click", function(){
+const addToBasket = (teddie) => {
 
             // Array of Teddies for basket
             let teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
@@ -79,14 +79,16 @@ const addToBasket = (button,teddie) => {
             // Save teddie array in localstorage basket
             localStorage.setItem("basket", JSON.stringify(teddieArray));
 
-            getBasketNb()
-        });
+            displayBasketNb(document.querySelector(".fa-shopping-bag"))
 }
 
 // * Function * See Article Nb in Basket
 const getBasketNb = () => {
-    // See Nb Item in Basket
-    let basketNb = document.querySelector(".fa-shopping-bag");
     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
-    basketNb.textContent = NbItem.length;
+    return NbItem.length;
+}
+
+// * Function * Display Article Nb in Basket
+const displayBasketNb = (basket) => {
+    basket.textContent = getBasketNb();
 }
