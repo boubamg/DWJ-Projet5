@@ -8,28 +8,28 @@ fetch("http://localhost:3000/api/teddies")
 
 // * Function * Display Teddies
 const displayTeddies = (teddies) => {
-     var container = document.querySelector(".container");
-        var ulElement = document.createElement("ul");
+     let container = document.querySelector(".container");
+        let ulElement = document.createElement("ul");
         container.appendChild(ulElement);
 
         // Loop for each Teddie Object
-        for(var i = 0; i < teddies.length; i++ ) {
+        for(let i = 0; i < teddies.length; i++ ) {
             
             // Creation of Tag
-            var liElement = document.createElement("li");
-            var a1Element = document.createElement("a");
-            var a2Element = document.createElement("a");
-            var buttonAdd = document.createElement("button");
+            let liElement = document.createElement("li");
+            let a1Element = document.createElement("a");
+            let a2Element = document.createElement("a");
+            let buttonAdd = document.createElement("button");
                 buttonAdd.textContent = "Ajouter au panier";
                 buttonAdd.classList.add("btn");
 
                 // function for add specific teddie in basket
                 addToBasket(buttonAdd,teddies[i]);
 
-            var imgElement = document.createElement("img");
-            var divElement = document.createElement("div");
-            var h3Element = document.createElement("h3");
-            var price = document.createElement("span");
+            let imgElement = document.createElement("img");
+            let divElement = document.createElement("div");
+            let h3Element = document.createElement("h3");
+            let price = document.createElement("span");
                 price.classList.add("price");
 
             // Display informations for each Teddies
@@ -61,10 +61,10 @@ const addToBasket = (button,teddie) => {
         button.addEventListener("click", function(){
 
             // Array of Teddies for basket
-            var teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
+            let teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
 
             // Teddie object
-            var teddieObj = {
+            let teddieObj = {
                 id : teddie._id,
                 image : teddie.imageUrl,
                 name : teddie.name,
@@ -86,7 +86,7 @@ const addToBasket = (button,teddie) => {
 // * Function * See Article Nb in Basket
 const getBasketNb = () => {
     // See Nb Item in Basket
-    var basketNb = document.querySelector(".fa-shopping-bag");
+    let basketNb = document.querySelector(".fa-shopping-bag");
     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
     basketNb.textContent = NbItem.length;
 }

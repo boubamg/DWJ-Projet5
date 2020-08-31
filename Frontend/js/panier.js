@@ -1,6 +1,6 @@
 // Articles in Basket
-const basket = localStorage.getItem('basket') ? localStorage.getItem('basket') : "";
-const basketParsed = localStorage.getItem('basket') ? JSON.parse(basket) : "";
+const basketParsed = localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : "";
+
 
 // Main Function 
 const basketManagement = () => {
@@ -15,7 +15,7 @@ const basketManagement = () => {
 
  // See Nb Item in Basket
 const getBasketNb = () => { 
-    var basketNb = document.querySelector(".fa-shopping-bag");
+    let basketNb = document.querySelector(".fa-shopping-bag");
     NbItem = localStorage.getItem("basket") ? JSON.parse(localStorage.basket) : 0;
     basketNb.textContent = NbItem.length;
 }
@@ -23,14 +23,14 @@ const getBasketNb = () => {
 // Get all articles in Basket
 const getBasket = () => {
 
-    var container = document.querySelector(".container");
+    let container = document.querySelector(".container");
 
     // Creation of elements
-    var h1Element = document.createElement("h1");
+    let h1Element = document.createElement("h1");
         h1Element.textContent = "Orinoco - Panier";
-    var ulElement = document.createElement("ul");
+    let ulElement = document.createElement("ul");
         ulElement.classList.add("basketList");
-    var totalPrice = document.createElement("p");
+    let totalPrice = document.createElement("p");
         totalPrice.classList.add("totalPrice", "text-right");
         totalPrice.textContent = "Montant Total : " + getTotalPrice() + "€";
 
@@ -39,32 +39,32 @@ const getBasket = () => {
     container.appendChild(ulElement);
     container.appendChild(totalPrice);
 
-    for(var i = 0; i < basketParsed.length; i++){
+    for(let i = 0; i < basketParsed.length; i++){
 
-        var selectTeddie = basketParsed[i];
+        let selectTeddie = basketParsed[i];
 
         // Create Element
-        var liElement = document.createElement("li");
+        let liElement = document.createElement("li");
 
-        var divImgBasket = document.createElement("div");
+        let divImgBasket = document.createElement("div");
             divImgBasket.classList.add("imgBasket");
-        var divInfoBasket = document.createElement("div");
+        let divInfoBasket = document.createElement("div");
             divInfoBasket.classList.add("infoBasket");
-        var divPriceBasket = document.createElement("div");
+        let divPriceBasket = document.createElement("div");
             divPriceBasket.classList.add("priceBasket");
 
-        var imgTeddie = document.createElement("img");
+        let imgTeddie = document.createElement("img");
             imgTeddie.classList.add("img-fluid");
-        var infoTeddie = document.createElement("h3");
-        var priceTeddie = document.createElement("span");
+        let infoTeddie = document.createElement("h3");
+        let priceTeddie = document.createElement("span");
             priceTeddie.classList.add("price");
-        var deleteButton = document.createElement("a");
+        let deleteButton = document.createElement("a");
             deleteButton.href = "javascript:window.location.reload()";
 
         deleteButton.addEventListener("click", function(){
 
             // Array of Teddies for basket
-            var teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
+            let teddieArray = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [];
             
             // Delete Teddie object in Array
             teddieArray.splice( selectTeddie, 1 );
@@ -98,9 +98,9 @@ const getBasket = () => {
 
 const deleteBasket = () => {
 
-    var container = document.querySelector(".container");
+    let container = document.querySelector(".container");
 
-    var deleteAll = document.createElement("a");
+    let deleteAll = document.createElement("a");
         deleteAll.textContent = "Vider le panier";
         deleteAll.classList.add("btn", "btn-danger", "deleteAllButton");
         
@@ -141,7 +141,7 @@ const orderTeddie = () => {
                     products.push(basketParsed[i].id);
                 }  
         
-                var orderingInformation = {contact, products}
+                let orderingInformation = {contact, products}
         
                 StringOrderingInformation = JSON.stringify(orderingInformation)
 
@@ -166,8 +166,8 @@ const orderTeddie = () => {
 
 // Get total order price 
 const getTotalPrice = () => {
-    var price = 0;
-    for(var i = 0; i < basketParsed.length; i++){
+    let price = 0;
+    for(let i = 0; i < basketParsed.length; i++){
         price += basketParsed[i].price;
     }
     return price;
@@ -177,12 +177,12 @@ const getTotalPrice = () => {
 
 const emptyBasket = () => {
 
-    var container = document.querySelector(".container");
+    let container = document.querySelector(".container");
 
-    var h1Element = document.createElement("h1");
-    var emptyBasketText = document.createElement("p");
+    let h1Element = document.createElement("h1");
+    let emptyBasketText = document.createElement("p");
         emptyBasketText.classList.add("text-center");
-    var homeButton = document.createElement("a");
+    let homeButton = document.createElement("a");
 
     h1Element.textContent = "Orinoco - Panier";
     emptyBasketText.textContent = "Votre panier est vide, cliquez ci-dessous pour voir nos articles.";
@@ -196,9 +196,10 @@ const emptyBasket = () => {
 
     disableForm();
 }
+
 const disableForm = () => {
     
-    var allInput = document.querySelectorAll("input");
+    let allInput = document.querySelectorAll("input");
     allInput.forEach(function(input){
         input.setAttribute("disabled","");
     });
