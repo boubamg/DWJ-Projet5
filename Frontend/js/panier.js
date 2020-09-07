@@ -100,12 +100,6 @@ const getBasket = () => {
     
 }
 
-const deleteBasket = (button) => {
-    
-   
-
-}
-
 // Order teddies
 const orderTeddie = () => {
 
