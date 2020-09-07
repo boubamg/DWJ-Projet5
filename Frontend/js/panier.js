@@ -26,17 +26,20 @@ const getBasket = () => {
         totalPrice.classList.add("totalPrice", "text-right");
         totalPrice.textContent = "Montant Total : " + getTotalPrice() + "€";
 
+    // clear basket button
     let deleteAll = document.createElement("a");
         deleteAll.textContent = "Vider le panier";
         deleteAll.classList.add("btn", "btn-danger", "deleteAllButton");
         
         deleteAll.href = "javascript:window.location.reload()";
 
-        
+        deleteAll.addEventListener("click", function(){
+            localStorage.clear();
+            getBasketNb();
+        });        
     
     container.appendChild(h1Element);
     container.appendChild(deleteAll)
-    deleteBasket(deleteAll);
     container.appendChild(ulElement);
     container.appendChild(totalPrice);
 
@@ -99,12 +102,8 @@ const getBasket = () => {
 
 const deleteBasket = (button) => {
     
-    button.addEventListener("click", function(){
-        localStorage.clear();
-        getBasketNb();
-    });
+   
 
-    
 }
 
 // Order teddies
