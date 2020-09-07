@@ -26,8 +26,17 @@ const getBasket = () => {
         totalPrice.classList.add("totalPrice", "text-right");
         totalPrice.textContent = "Montant Total : " + getTotalPrice() + "€";
 
+    let deleteAll = document.createElement("a");
+        deleteAll.textContent = "Vider le panier";
+        deleteAll.classList.add("btn", "btn-danger", "deleteAllButton");
+        
+        deleteAll.href = "javascript:window.location.reload()";
+
+        
+    
     container.appendChild(h1Element);
-    deleteBasket(deleteBasketButton());
+    container.appendChild(deleteAll)
+    deleteBasket(deleteAll);
     container.appendChild(ulElement);
     container.appendChild(totalPrice);
 
@@ -86,20 +95,6 @@ const getBasket = () => {
         ulElement.appendChild(liElement);
     }
     
-}
-
-const deleteBasketButton = () => {
-    let container = document.querySelector(".container");
-
-    let deleteAll = document.createElement("a");
-        deleteAll.textContent = "Vider le panier";
-        deleteAll.classList.add("btn", "btn-danger", "deleteAllButton");
-        
-        deleteAll.href = "javascript:window.location.reload()";
-
-        container.appendChild(deleteAll)
-
-    return deleteAll;
 }
 
 const deleteBasket = (button) => {
