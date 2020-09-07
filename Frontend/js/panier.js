@@ -27,7 +27,7 @@ const getBasket = () => {
         totalPrice.textContent = "Montant Total : " + getTotalPrice() + "€";
 
     container.appendChild(h1Element);
-    deleteBasket();
+    deleteBasket(deleteBasketButton());
     container.appendChild(ulElement);
     container.appendChild(totalPrice);
 
@@ -88,8 +88,7 @@ const getBasket = () => {
     
 }
 
-const deleteBasket = () => {
-
+const deleteBasketButton = () => {
     let container = document.querySelector(".container");
 
     let deleteAll = document.createElement("a");
@@ -97,13 +96,20 @@ const deleteBasket = () => {
         deleteAll.classList.add("btn", "btn-danger", "deleteAllButton");
         
         deleteAll.href = "javascript:window.location.reload()";
+
+        container.appendChild(deleteAll)
+
+    return deleteAll;
+}
+
+const deleteBasket = (button) => {
     
-    deleteAll.addEventListener("click", function(){
+    button.addEventListener("click", function(){
         localStorage.clear();
         getBasketNb();
     });
 
-    container.appendChild(deleteAll)
+    
 }
 
 // Order teddies
