@@ -8,7 +8,7 @@ fetch("http://localhost:3000/api/teddies/" + id)
     .then(response => response.json())
     .then(teddie => {
         displaySpecifictTeddie(teddie);
-        getBasketNb();
+        displayBasketNb(document.querySelector(".fa-shopping-bag"));
     }).catch(err => console.log(err))
 
 // Display Specific Teddie

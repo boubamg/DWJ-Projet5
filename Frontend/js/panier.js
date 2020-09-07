@@ -4,7 +4,7 @@ const basketParsed = localStorage.getItem('basket') ? JSON.parse(localStorage.ge
 // Main Function 
 const basketManagement = () => {
     if (basketParsed != 0){
-        getBasketNb();
+        displayBasketNb(document.querySelector(".fa-shopping-bag"));
         getBasket();
         orderTeddie();
     } else {

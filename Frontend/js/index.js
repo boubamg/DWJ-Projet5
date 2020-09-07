@@ -3,7 +3,7 @@ fetch("http://localhost:3000/api/teddies")
     .then(response => response.json())
     .then(teddies => {
         displayTeddies(teddies);
-        getBasketNb();
+        displayBasketNb(document.querySelector(".fa-shopping-bag"));
     }).catch(err => console.log(err))
 
 // * Function * Display Teddies
