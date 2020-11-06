@@ -131,7 +131,7 @@ const orderTeddie = () => {
         
                 StringOrderingInformation = JSON.stringify(orderingInformation)
 
-                fetch("http://localhost:3000/api/teddies/order",{
+                fetch("https://mvp-ecommerce.herokuapp.com/api/teddies/order",{
                     method: 'POST',
                     body: StringOrderingInformation,
                     headers: {'Content-Type': 'application/json'}

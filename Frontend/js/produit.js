@@ -4,7 +4,7 @@ const searchParams = new URLSearchParams(urlParams);
 const id = searchParams.get("id");
 
 // Connect to API
-fetch("http://localhost:3000/api/teddies/" + id)
+fetch("https://mvp-ecommerce.herokuapp.com/api/teddies/" + id)
     .then(response => response.json())
     .then(teddie => {
         displaySpecifictTeddie(teddie);

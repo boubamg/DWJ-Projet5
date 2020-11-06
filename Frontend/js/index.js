@@ -1,5 +1,5 @@
 // Connexion to API
-fetch("http://localhost:3000/api/teddies")
+fetch("https://mvp-ecommerce.herokuapp.com/api/teddies")
     .then(response => response.json())
     .then(teddies => {
         displayTeddies(teddies);
